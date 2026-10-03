@@ -159,85 +159,35 @@
 
     <div class="forms">
 
-        <form name="asistenciaform" method="POST" action="" class="formulario" id="asistenciaForm">
+       
 
-            <label class="formtitle">Sólo faltas vos, Venís?</label>
+           
 
-            <select name="NUMERO_PERSONAS" id="numeroPersonas" required>
-                <option value="" disabled selected>¿Cuántas personas van a confirmar?</option>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="4">4</option>
-                <option value="5">5</option>
-            </select>
+        <form name="asistenciaform" method="POST" action="https://script.google.com/macros/s/AKfycbxFdN2yDsNS-dTtyDOpovGd5CO2h4XvkMjL0p4TQeTbP2dqwqZY1BBehNEw69gTmCMV/exec" class="formulario">
+        <label class="formtitle">Sólo faltas vos, Venís?</label>
+        <div class="radio-group">
+          <label class="radio-option"><input type="radio" name="ASISTENCIA" value="sí" required><span>Sí</span></label>
+          <label class="radio-option"><input type="radio" name="ASISTENCIA" value="no"><span>No</span></label>
+        </div>
 
-            <div id="invitadosContainer"></div>
+        <input type="text" name="NOMBRE" placeholder="Nombre" required>
+        <input type="text" name="APELLIDO" placeholder="Apellido" required>
 
-            <button type="submit" class="boton">ENVIAR</button>
-        </form>
+        <select name="DIETA" id="dieta" required>
+          <option value="" disabled selected>Dieta</option>
+          <option value="Nada">Nada</option>
+          <option value="Vegano">Vegano</option>
+          <option value="Vegetariano">Vegetariano</option>
+          <option value="Celíaco">Celíaco</option>
+        </select>
+ <textarea name="CANCION" placeholder="Recomendale una canción al Dj 🎵"></textarea>
+        <textarea name="MENSAJE" placeholder="Dejale un mensaje a los novios 🤍"></textarea>
 
-        <script>
-        (function () {
-          var select = document.getElementById('numeroPersonas');
-          var container = document.getElementById('invitadosContainer');
+        <button type="submit" class="boton">Enviar</button>
+      </form>
 
-          function bloqueInvitado(n) {
-            var esPrimero = n === 1;
-            var titulo = esPrimero ? '' : '<label class="invitado-titulo">Invitado n.º ' + n + '</label>';
-            var extra = esPrimero
-              ? '<textarea name="CANCION_' + n + '" placeholder="Recomendale una canción al DJ 🎶"></textarea>'
-                + '<textarea name="MENSAJE_' + n + '" placeholder="Dejale un mensaje a los novios 🤍"></textarea>'
-              : '';
 
-            return ''
-              + '<div class="invitado-bloque" data-invitado="' + n + '">'
-              + titulo
-              + '<input type="text" name="NOMBRE_' + n + '" placeholder="Nombre" required />'
-              + '<input type="text" name="APELLIDO_' + n + '" placeholder="Apellido" required />'
-              + '<select name="ASISTENCIA_' + n + '" required>'
-              +   '<option value="" disabled selected>Asistís?</option>'
-              +   '<option value="Sí">Sí</option>'
-              +   '<option value="No">No</option>'
-              +   '<option value="Aún no lo decido">Aún no lo decido</option>'
-              + '</select>'
-              + '<select name="DIETA_' + n + '" required>'
-              +   '<option value="" disabled selected>¿Alguna dieta especial?</option>'
-              +   '<option value="Nada">Nada / Como de todo</option>'
-              +   '<option value="Vegetariano">Vegetariano</option>'
-              +   '<option value="Vegano">Vegano</option>'
-              +   '<option value="Celíaco">Celíaco</option>'
-              + '</select>'
-              + extra
-              + '</div>';
-          }
-
-          function render(cantidad) {
-            // Antes de redibujar, guarda lo que la persona ya haya completado
-            var guardados = {};
-            container.querySelectorAll('input, select, textarea').forEach(function (el) {
-              if (el.name) guardados[el.name] = el.value;
-            });
-
-            var html = '';
-            for (var i = 1; i <= cantidad; i++) html += bloqueInvitado(i);
-            container.innerHTML = html;
-
-            // Restaura los valores que ya estaban cargados
-            container.querySelectorAll('input, select, textarea').forEach(function (el) {
-              if (el.name && guardados[el.name] !== undefined) el.value = guardados[el.name];
-            });
-          }
-
-          select.addEventListener('change', function () {
-            render(parseInt(select.value, 10));
-          });
-
-          render(1); // el invitado 1 está siempre presente (mínimo 1 persona)
-        })();
-        </script>
-
-        <p data-aos="fade-up">RECORDÁ COMPLETAR EL <br> FORMULARIO ANTES DEL 31 DE OCTUBRE.</p>
+        <p data-aos="fade-up">RECORDÁ COMPLETAR UN FORMULARIO POR PERSONA <br> FORMULARIO ANTES DEL 31 DE OCTUBRE.</p>
     </div>
 
     <div class="novios">
